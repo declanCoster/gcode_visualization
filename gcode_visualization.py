@@ -1,11 +1,14 @@
+import os
 import numpy as np
 import matplotlib.pyplot as plt
 plt.figure(figsize=(10,10))
 plt.gca().invert_yaxis()
 
-
+img = plt.imread(os.path.join('.', 'cropped', 'original.png'))
 ### Plot Edge Corners
+plt.imshow(img, extent=[20, 140, 0, 120])
 plt.scatter([20, 140, 20, 140], [0, 0, 120, 120], c='b')
+# fig, ax = plt.subplots()
 
 ### Plot Lines of Gcode File
 Xprev = None
@@ -52,5 +55,5 @@ with open(gcode_file) as fp:
 
 ### Save Figure
 # plt.savefig(gcode_file[:(len(gcode_file)-6)] + '.png')
-plt.savefig('gcode_files/overlap.png')
+plt.savefig('cropped/original.png', transparent=False)
 
